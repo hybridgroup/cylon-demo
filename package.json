@@ -1,0 +1,35 @@
+{
+  "name": "cylon-example",
+  "version": "0.0.0",
+  "description": "cylon-example =============",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/adzankich/cylon-example"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adzankich/cylon-example/issues"
+  },
+  "homepage": "https://github.com/adzankich/cylon-example",
+  "dependencies": {
+    "cylon": "git://github.com/hybridgroup/cylon.git",
+    "cylon-ardrone": "git://github.com/hybridgroup/cylon-ardrone.git",
+    "cylon-joystick": "git://github.com/hybridgroup/cylon-joystick.git",
+    "cylon-gpio": "git://github.com/hybridgroup/cylon-gpio.git",
+    "cylon-i2c": "git://github.com/hybridgroup/cylon-i2c.git",
+    "cylon-sphero": "git://github.com/hybridgroup/cylon-sphero.git",
+    "cylon-digispark": "git://github.com/hybridgroup/cylon-digispark.git",
+    "cylon-opencv": "git://github.com/hybridgroup/cylon-opencv.git",
+    "cylon-leapmotion": "git://github.com/hybridgroup/cylon-leapmotion.git",
+    "cylon-firmata": "git://github.com/hybridgroup/cylon-firmata.git",
+    "travis-ci": "*"
+  }
+}
