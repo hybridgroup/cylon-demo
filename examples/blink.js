@@ -10,19 +10,13 @@
       adaptor: 'firmata',
       port: '/dev/ttyACM0'
     },
-    devices: [
-      {
-        name: 'led',
-        driver: 'led',
-        pin: 13
-      }, {
-        name: 'button',
-        driver: 'button',
-        pin: 2
-      }
-    ],
+    device: {
+      name: 'led',
+      driver: 'led',
+      pin: 13
+    },
     work: function(my) {
-      return my.button.on('push', function() {
+      return every(1..second(), function() {
         return my.led.toggle();
       });
     }
