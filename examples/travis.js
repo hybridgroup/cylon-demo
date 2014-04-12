@@ -41,7 +41,8 @@
       return function(me) {
         var name, user;
         user = "hybridgroup";
-        name = "cylon";
+        //name = "cylon";
+        name = "broken-arrow";
         console.log("Checking repo " + user + "/" + name);
         me.blue.turnOn();
         return travis.repos({
