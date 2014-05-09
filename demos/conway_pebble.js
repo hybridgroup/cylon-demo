@@ -4,7 +4,8 @@ var bots = [
   { port: '/dev/rfcomm0', name: 'Thelma' },
   { port: '/dev/rfcomm1', name: 'Louise' },
   { port: '/dev/rfcomm2', name: 'Grace' },
-  { port: '/dev/rfcomm3', name: 'Ada' }
+  { port: '/dev/rfcomm3', name: 'Ada' },
+  { port: '/dev/rfcomm4', name: 'Mary' }
 ];
 
 var Green = 0x00FF00;
@@ -40,7 +41,7 @@ var ConwayRobot = (function() {
   };
 
   ConwayRobot.prototype.enoughContacts = function() {
-    return (this.contacts >= 2 && this.contacts < 7);
+    return (this.contacts > 2 && this.contacts < 7);
   };
 
   ConwayRobot.prototype.birthday = function() {
@@ -58,10 +59,14 @@ var ConwayRobot = (function() {
   };
 
   ConwayRobot.prototype.work = function(me) {
-    me.born();
+    var self = this;
+    me.sphero.on('connect', function() {
+        me.sphero.detectCollisions();
+        me.born();
+    });
 
     me.sphero.on('collision', function() {
-      this.contacts += 1;
+      self.contacts += 1;
     });
 
     every((3).seconds(), function() {
@@ -94,7 +99,7 @@ var PebbleRobot = (function() {
         for (var i = 0; i < bots.length; i++) {
           var bot = bots[i];
           me.master.findRobot(bot.name, function(error, spheroBot) {
-            if spheroBot.alive == true {
+            if (spheroBot.alive == true) {
               alive += 1; 
             } else {
               dead += 1;
@@ -102,7 +107,7 @@ var PebbleRobot = (function() {
           });    
         }
         var msg = "alive: " + alive + "\ndead: " + dead + "\n" 
-        me.message_queue().push(msg);
+        me.pebble.message_queue().push(msg);
       });
   };
 
@@ -123,5 +128,5 @@ var robot = new PebbleRobot;
 robot.name = "pebble";
 Cylon.robot(robot);
 
-Cylon.api({host: '10.22.25.22', port: '8080', ssl:  false});
+Cylon.api({host: '192.168.1.116', port: '8080', ssl:  false});
 Cylon.start();
