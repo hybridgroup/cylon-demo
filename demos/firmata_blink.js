@@ -1,24 +1,14 @@
-(function() {
-  var Cylon;
+var Cylon = require('cylon');
 
-  Cylon = require('cylon');
+Cylon.robot({
+  connection: { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' },
+  device: {name: 'led', driver: 'led', pin: 13},
 
-  Cylon.robot({
-    connection: {
-      name: 'arduino',
-      adaptor: 'firmata',
-      port: '/dev/ttyACM0'
-    },
-    device: {
-      name: 'led',
-      driver: 'led',
-      pin: 13
-    },
-    work: function(my) {
-      return every(1..second(), function() {
-        return my.led.toggle();
-      });
-    }
-  }).start();
+  work: function(my) {
+    every((1).second(), function() {
+      my.led.toggle();
+    });
+  }
+});
 
-}).call(this);
+Cylon.start();
