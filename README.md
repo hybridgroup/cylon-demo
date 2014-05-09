@@ -1,2 +1,2 @@
-cylon-example
+cylon-demo
 =============
