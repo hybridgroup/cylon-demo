@@ -9,4 +9,6 @@ Cylon.robot({
     after((10).seconds(), my.drone.land);
     after((15).seconds(), my.drone.stop);
   }
-}).start();
+});
+
+Cylon.start();
