@@ -20,7 +20,9 @@ Cylon.robot({
       color = color ^ bitFilter;
       console.log("Color: " + (color.toString(16)) + " ");
       me.sphero.setRGB(color);
-      //me.sphero.roll(90, Math.floor(Math.random() * 360));
+      me.sphero.roll(90, Math.floor(Math.random() * 360));
     });
   }
-}).start();
+});
+
+Cylon.start();
