@@ -26,13 +26,9 @@ Cylon.robot({
     }
   },
   work: function(my) {
-    this.image = null;
-    var self = this;
-
     my.drone.getPngStream().on('data', function(png) {
       my.opencv.readImage(png, function(err, img) {
-        self.image = img;
-        if (self.detect === false) { my.window.show(img); }
+        my.window.show(img);
       });
     });
     
